@@ -1,0 +1,25 @@
+================
+KÄSUD
+================
+gfortran --version
+
+Kompileerimiseks - gfortran test2.f90 -o test2
+Käivitamiseks - ./test2
+
+================
+MUUTUJAD
+================
+real a,b,c,abc... - reaalarv 1.0
+integer - naturaalarv 1
+logical - (true/false) - onTõene = true
+complex - kompleksarv
+character*8 - kaheksakohaline string
+
+
+print   stop    end
++, -, *, /, **(astendaja)
+sin, cos, asin, and, tan, sqrt
+
+sqrt(2) = 2**(1/2)
+
+Et fortran arvutaks komakohtadega nt 2/3, (siin tuleb vastus 0), aga kui panna 2./3., siis tuleb vastus 0.666...
