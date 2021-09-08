@@ -15,8 +15,11 @@ logical - (true/false) - onTõene = true
 complex - kompleksarv
 character*8 - kaheksakohaline string
 
+MASSIIV - real massiiv(10) ! FORTRANIS HAKKAB LOENDAMINE ühest mitte nullist
+================
 
-print   stop    end
+print   stop    end read write open
+
 +, -, *, /, **(astendaja)
 sin, cos, asin, and, tan, sqrt
 
