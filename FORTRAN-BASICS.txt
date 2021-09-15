@@ -11,6 +11,8 @@ MUUTUJAD
 ================
 real a,b,c,abc... - reaalarv 1.0
 integer - naturaalarv 1
+(võib kirjutada integer*2, mis tähendab et integeri jaoks kasutame maksimaalselt 2 baiti)
+
 logical - (true/false) - onTõene = true
 complex - kompleksarv
 character*8 - kaheksakohaline string
