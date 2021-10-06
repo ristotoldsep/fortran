@@ -1,0 +1,46 @@
+real pi, r_keha, m_keha, c_keha, v_keha, myy_gaas, g_rask, r_gaas, t_gaas
+real p_gaas, dt, x, v, roo_gaas, roo_gaas_0, param1, param2, a
+integer i, nt
+open(10, file="pall_1d.dot")
+
+pi = 3.14159265
+m_keha = 15.
+g_rask = 9.814 ! Raskuskiirendus
+c_keha = 0.47
+r_keha = 2. ! Keha raadius
+s_keha = pi * r_keha ** 2 ! Keha pindala
+myy_gaas = 29. ! Õhu molaarmass
+r_gaas = 8341. ! Universaalne gaasikonstant
+t_gaas = 288. ! Atmosfääri temp maapinnal kelvinites -> 288K =~ 15C
+v_keha = 4 * pi * r_keha ** 3 / 3 ! Keha ruumala
+p_gaas = 101700. ! Atmosfääri rõhk maapinnal Paskalites
+roo_gaas_0 = (p_gaas * myy) / (r_gaas * t_gaas) ! Gaasi tihedus maapinnal
+param1 = (0.5 * c_keha * s_keha) / m_keha
+param2 = (myy_gaas*g_rask)/(r_gaas*t_gaas)
+
+dt = 0.1 ! Ajasamm (delta t) (sammude pikkus)
+nt = 40000 ! Sammude arv
+
+x = 0. ! Palli algasukoht (palli kõrgus?)
+v = 0. ! Kiiruse algvaartus (pall ei liigu)
+
+do i = 1, nt 
+    
+    roo_gaas = roo_gaas_0 * exp((-1*param2) * x)
+    a = (((roo_gaas * v_keha) / m_keha) - 1.) * g_rask - param1 * roo_gaas * abs(v) * v
+
+    x = x + v*dt + 0.5*a*(dt ** 2)
+    v = v + a * dt
+
+    e_kin = 0.5 * m_keha * (v**2)
+    e_pot = m_keha * g_rask * x
+    e_tot = e_kin + e_pot
+
+    write(10, *) i*dt, x, v, a, e_kin, e_pot, e_tot
+
+enddo
+
+stop
+end
+
+
